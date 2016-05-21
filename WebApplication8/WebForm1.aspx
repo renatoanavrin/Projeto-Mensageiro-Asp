@@ -13,6 +13,7 @@
     <script src="Scripts/bootstrap.min.js"></script> -->
 <script src="Scripts/jquery-1.10.2.js"></script>
 <script src="Scripts/bootstrap.min.js"></script>
+<script src="Scripts/WebForms/MSAjax/mensageiro.js"></script>
 
 <body class="fundo-cinza">
     <form id="form1" runat="server">
@@ -26,12 +27,31 @@
             </div>
 
             <div class="col-md-8 caixaMensagens">
-
+                
             </div>
         </div>
-    <div>
+    <div id="botoes">
         <asp:Button ID="addUsuario" runat="server" Text="Adicionar Usuário" OnClick="addUsuario_Click" />
+        <asp:Button ID="Conversar" runat="server" Text="Conversar" OnClick="addUsuario_Click" />
+        <asp:Button runat="server" id="btnHidden" style="display:none" onclick="btnHidden_OnClick" Text="teste" />
     </div>
+
+        
+<div onclick="javascript:DivClicked(); return true;">click aqui</div>
+
+<script>
+
+function DivClicked(usuario)
+{
+    alert(usuario);
+    var btnHidden = $('#<%= btnHidden.ClientID %>');
+    if(btnHidden != null)
+    {
+        btnHidden.click();
+    }
+}
+
+</script>
     </form>
 </body>
 </html>
