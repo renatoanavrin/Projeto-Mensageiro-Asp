@@ -31,6 +31,24 @@ namespace WebApplication8 {
         protected global::System.Web.UI.WebControls.Literal Literal1;
         
         /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// btnEnviarMensagem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEnviarMensagem;
+        
+        /// <summary>
         /// addUsuario control.
         /// </summary>
         /// <remarks>
@@ -56,5 +74,23 @@ namespace WebApplication8 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnHidden;
+        
+        /// <summary>
+        /// hiddenchoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hiddenchoice;
+        
+        /// <summary>
+        /// usuarioSessao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox usuarioSessao;
     }
 }

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
 using MySql.Data.MySqlClient;
-
+using WebApplication8.Models;
 
 namespace WebApplication8
 {
@@ -19,19 +19,34 @@ namespace WebApplication8
             var connection = new MySqlConnection(connString);
             var command = connection.CreateCommand();
             MySqlDataReader dr;
+            var String = hiddenchoice;
+            amigos am = new amigos();
 
-            try
+            Literal1.Text =am.retornaAmigos("renato", hiddenchoice.Text);
+
+         /*   try
             {
                 connection.Open();
                 command.CommandText = "select c.* from usuario a join amigos b on a.usuarioid = b.usuarioid join usuario c on b.usuarioamigoid = c.usuarioid where a.login = 'renato'";
                 /*MySqlDataAdapter adap = new MySqlDataAdapter(command);
                 DataSet ds = new DataSet();
                 adap.Fill(ds);*/
-                dr = command.ExecuteReader();
-                String divs = "";
+           /*     dr = command.ExecuteReader();
+                String divs = "",selecionado ="";
                 while (dr.Read())
                 {
-                    divs = divs + "<div onclick='javascript: DivClicked(" + '"' + dr["login"] + '"' + "); return true;'" + " class='usuario' id=" + dr["login"] + ">" + dr["nome"] + "</div>";
+                    if (hiddenchoice.Text == Convert.ToString(dr["login"]))
+                    {
+                        selecionado = " selecionado";
+                    }else
+                    {
+                       // hiddenchoice.Text =""+ dr["login"];
+                        selecionado = "";
+                    }
+
+                    
+
+                    divs = divs + "<a href='#'><div onclick='javascript: DivClicked(" + '"' + dr["login"] + '"' + "); return true;'" + " class='usuario " + selecionado + "' id=" + dr["login"] + ">" + dr["nome"] + "</div></a>";
                     //<div onclick="javascript:DivClicked(); return true;">click aqui</div>   
                 }
                 Literal1.Text = divs;
@@ -39,8 +54,8 @@ namespace WebApplication8
             finally
             {
                 connection.Close();
-            }
-
+            }*/
+            usuarioSessao.Text = "chegou aqui " + Session["usuarioSelecionado"];
         }
 
         protected void addUsuario_Click(object sender, EventArgs e)
@@ -63,10 +78,12 @@ namespace WebApplication8
                 DataSet ds = new DataSet();
                 adap.Fill(ds);*/
                 dr = command.ExecuteReader();
-                String divs = "";
+                String divs = "",selecionado ="";
                 while (dr.Read())
                 {
-                    divs = divs + "<div onclick='javascript: DivClicked(" + '"'+dr["login"] +'"' +"); return true;'" + " class='usuario' id=" + dr["login"] + ">" + dr["nome"] + "</div>";
+                   
+
+                    divs = divs + "<div onclick='javascript: DivClicked(" + '"'+dr["login"] +'"' +"); return true;'" + " class='usuario " + selecionado +"' id=" + dr["login"] + ">" + dr["nome"] + "</div>";
                     //<div onclick="javascript:DivClicked(); return true;">click aqui</div>   
                 }
                 Literal1.Text = divs;
@@ -75,7 +92,10 @@ namespace WebApplication8
             {
                     connection.Close();
             }
+            // Session["Test"].ToString();
 
+
+            
 
             //conn.ConnectionString = "Provider=Microsoft.Jet.OleDb.4.0;Data Source=C:\\Users\\Renato\\mensageiro\\mensageiro.mdb";
 
@@ -100,21 +120,21 @@ namespace WebApplication8
                     nuReg++;
                 }*/
 
-/*            String divs = "";
+            /*            String divs = "";
 
-            while (dr.Read())
-            {
-                divs = divs + "<div class='usuario'>" + dr["nome"] +"</div>";
-            }
+                        while (dr.Read())
+                        {
+                            divs = divs + "<div class='usuario'>" + dr["nome"] +"</div>";
+                        }
 
 
- 
 
-            /*for (int x=0; x<=10;x++)
-            {
-                divs = divs + "<div class='usuario jumbotron'>usuario" +x+ " </div>";
-            }*/
-  
+
+                        /*for (int x=0; x<=10;x++)
+                        {
+                            divs = divs + "<div class='usuario jumbotron'>usuario" +x+ " </div>";
+                        }*/
+
 
             //conn.Close();
             /*< div class="usuario">
@@ -124,7 +144,8 @@ namespace WebApplication8
 
         protected void btnHidden_OnClick(object sender, EventArgs e)
         {
-            
+            Session["usuarioSelecionado"] = hiddenchoice.Text;
+           
         }
     }
 }
